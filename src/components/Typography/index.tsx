@@ -1,0 +1,32 @@
+import { ElementType, forwardRef } from 'react'
+import {
+  PolymorphicComponentPropsWithRef,
+  PolymorphicRef,
+} from 'shared/types/polymorphic'
+
+const DEFAULT_ELEMENT = 'p'
+
+type ElementsWeControl = 'p' | 'span' | 'h1' | 'h2' | 'h3'
+
+type TypographyProps<E extends ElementType> =
+  PolymorphicComponentPropsWithRef<E>
+
+const Typography = forwardRef(
+  <E extends ElementType>(
+    { as, children, ...props }: TypographyProps<E | typeof DEFAULT_ELEMENT>,
+    forwardedRef: PolymorphicRef<E>
+  ) => {
+    const Element = as || DEFAULT_ELEMENT
+    return (
+      <Element ref={forwardedRef} {...props}>
+        {children}
+      </Element>
+    )
+  }
+)
+
+Typography.displayName = 'Typography'
+
+export default Typography as <E extends ElementsWeControl>(
+  props: TypographyProps<E> & { ref?: PolymorphicRef<E> }
+) => ReturnType<typeof Typography>
