@@ -6,7 +6,7 @@ import {
 
 const DEFAULT_ELEMENT = 'p'
 
-type ElementsWeControl = 'p' | 'span' | 'h1' | 'h2' | 'h3'
+type TypographyElements = 'p' | 'span' | 'h1' | 'h2' | 'h3'
 
 type TypographyProps<E extends ElementType> =
   PolymorphicComponentPropsWithRef<E>
@@ -27,6 +27,6 @@ const Typography = forwardRef(
 
 Typography.displayName = 'Typography'
 
-export default Typography as <E extends ElementsWeControl>(
+export default Typography as <E extends TypographyElements>(
   props: TypographyProps<E> & { ref?: PolymorphicRef<E> }
 ) => ReturnType<typeof Typography>
