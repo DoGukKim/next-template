@@ -1,12 +1,13 @@
 import { ElementType, forwardRef } from 'react'
+
 import {
   PolymorphicComponentPropsWithRef,
   PolymorphicRef,
-} from 'shared/types/polymorphic'
+} from 'utils/types/polymorphic'
 
 const DEFAULT_ELEMENT = 'p'
 
-type TypographyElements = 'p' | 'span' | 'h1' | 'h2' | 'h3'
+type TypographyElements = 'p' | 'span' | 'h1' | 'h2' | 'h3' | 'label'
 
 type TypographyProps<E extends ElementType> =
   PolymorphicComponentPropsWithRef<E>

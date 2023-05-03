@@ -3,7 +3,7 @@ import {
   ComponentPropsWithoutRef,
   ElementType,
 } from 'react'
-import { CombineType } from './util'
+import { CombineType } from './combine'
 
 export type PolymorphicRef<E extends ElementType> =
   ComponentPropsWithRef<E>['ref']
