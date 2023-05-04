@@ -3,7 +3,7 @@ import { ElementType, forwardRef } from 'react'
 import {
   PolymorphicComponentPropsWithRef,
   PolymorphicRef,
-} from 'utils/types/polymorphic'
+} from 'shared/types/polymorphic'
 
 const DEFAULT_ELEMENT = 'p'
 

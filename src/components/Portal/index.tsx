@@ -1,18 +1,26 @@
-import { ReactNode } from 'react'
+import { ReactNode, useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
 
 type PortalProps = {
   children: ReactNode
-  containerId: Element['id']
+  id?: Element['id']
 }
 
-const Portal = ({ children, containerId }: PortalProps) => {
-  const container =
-    typeof window !== undefined && document.getElementById(containerId)
+const Portal = ({ children, id }: PortalProps) => {
+  const ref = useRef<HTMLElement | null>(null)
+  const [mounted, setMounted] = useState<boolean>(false)
 
-  if (!container) return null
+  useEffect(() => {
+    setMounted(true)
+    const portalRoot = id ? document.getElementById(id) : document.body
+    ref.current = portalRoot
+  }, [id])
 
-  return <>{createPortal(children, container)}</>
+  if (ref.current && mounted) {
+    return createPortal(children, ref.current)
+  }
+
+  return null
 }
 
 export default Portal

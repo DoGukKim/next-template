@@ -4,8 +4,8 @@ import { css, cx } from '@emotion/css'
 import {
   PolymorphicComponentPropsWithRef,
   PolymorphicRef,
-} from 'utils/types/polymorphic'
-import { CombineType } from 'utils/types/combine'
+} from 'shared/types/polymorphic'
+import { CombineType } from 'shared/types/combine'
 import { LayoutElements } from './type'
 
 import { DEFAULT_ELEMENT } from './constant'
