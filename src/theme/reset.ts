@@ -19,7 +19,7 @@ export const reset = (theme: Theme) => css`
 
   // TODO: 프로젝트에 맞게 색상을 대입하고, 추가 CSS 속성을 추가.
   body {
-    background-color: ${theme.color.grey};
+    background-color: ${theme.color.grey[300]};
   }
 
   a,
