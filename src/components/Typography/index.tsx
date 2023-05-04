@@ -7,8 +7,7 @@ import {
 
 const DEFAULT_ELEMENT = 'p'
 
-type TypographyElements = 'p' | 'span' | 'h1' | 'h2' | 'h3' | 'label'
-
+type TypographyElements = 'p' | 'span' | 'h1' | 'h2' | 'h3'
 type TypographyProps<E extends ElementType> =
   PolymorphicComponentPropsWithRef<E>
 
