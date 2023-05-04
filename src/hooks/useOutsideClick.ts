@@ -1,16 +1,11 @@
 import { RefObject, useEffect } from 'react'
 
-type Props = {
-  ref: RefObject<HTMLElement>
-  callback: () => void
-}
-
-const useOutsideClick = ({ ref, callback }: Props) => {
+const useOutsideClick = (ref: RefObject<HTMLElement>, callback: () => void) => {
   useEffect(() => {
     const handleClick = (event: MouseEvent) => {
       if (
-        ref.current &&
         event.target instanceof Element &&
+        ref.current &&
         !ref.current.contains(event.target)
       ) {
         callback()
