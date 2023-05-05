@@ -1,5 +1,13 @@
+import Dialog from 'components/Dialog'
+
 const ModalPage = () => {
-  return <></>
+  return (
+    <main>
+      <Dialog>
+        <Dialog.Trigger>test</Dialog.Trigger>
+      </Dialog>
+    </main>
+  )
 }
 
 export default ModalPage
