@@ -1,1 +1,1 @@
-export const MODAL_PORTAL_ROOT_ID = 'modal-portal-root'
+export const DIALOG_PORTAL_ROOT_ID = 'dialog-portal-root'

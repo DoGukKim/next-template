@@ -10,14 +10,16 @@ import {
 } from 'react'
 
 import DialogTrigger from './Trigger'
+import DialogOverlay from './Overlay'
 
 type DialogAction = {
   onOpenToggle: () => void
 }
 
 type DialogValue = {
-  open: boolean
   contentId: string
+  modal: boolean
+  open: boolean
   triggerRef: RefObject<HTMLButtonElement>
 }
 
@@ -26,6 +28,7 @@ const DialogValueContext = createContext<DialogValue | null>(null)
 
 type DialogProps = {
   children: ReactNode
+  modal?: boolean
 }
 
 export const useDialogValue = () => {
@@ -48,7 +51,7 @@ export const useDialogAction = () => {
   return context
 }
 
-const Dialog = ({ children }: DialogProps) => {
+const Dialog = ({ children, modal = true }: DialogProps) => {
   const [_open, setOpen] = useState<DialogValue['open']>(false)
 
   const triggerRef = useRef<HTMLButtonElement>(null)
@@ -65,9 +68,10 @@ const Dialog = ({ children }: DialogProps) => {
     () => ({
       contentId: `dialog-${triggerId}`,
       open: _open,
+      modal: modal,
       triggerRef: triggerRef,
     }),
-    [_open, triggerId]
+    [_open, modal, triggerId]
   )
 
   return (
@@ -80,5 +84,6 @@ const Dialog = ({ children }: DialogProps) => {
 }
 
 Dialog.Trigger = DialogTrigger
+Dialog.Overlay = DialogOverlay
 
 export default Dialog
