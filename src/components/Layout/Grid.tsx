@@ -1,5 +1,5 @@
 import { CSSProperties, ElementType, forwardRef } from 'react'
-import { css, cx } from '@emotion/css'
+import { css } from '@emotion/react'
 
 import {
   PolymorphicComponentPropsWithRef,
@@ -31,7 +31,6 @@ const Grid = forwardRef(
       autoRows,
       autoColumns,
       autoFlow,
-      className,
       children,
       gap,
       templateRows,
@@ -44,18 +43,15 @@ const Grid = forwardRef(
 
     return (
       <Element
-        className={cx(
-          css`
-            display: grid;
-            grid-template-rows: ${templateRows};
-            grid-template-columns: ${templateColumns};
-            grid-auto-rows: ${autoRows};
-            grid-auto-columns: ${autoColumns};
-            grid-auto-flow: ${autoFlow};
-            gap: ${gap};
-          `,
-          className
-        )}
+        css={css`
+          display: grid;
+          grid-template-rows: ${templateRows};
+          grid-template-columns: ${templateColumns};
+          grid-auto-rows: ${autoRows};
+          grid-auto-columns: ${autoColumns};
+          grid-auto-flow: ${autoFlow};
+          gap: ${gap};
+        `}
         ref={forwardedRef}
         {...props}
       >

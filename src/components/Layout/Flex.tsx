@@ -1,5 +1,5 @@
 import { CSSProperties, ElementType, forwardRef } from 'react'
-import { css, cx } from '@emotion/css'
+import { css } from '@emotion/react'
 
 import {
   PolymorphicComponentPropsWithRef,
@@ -29,7 +29,6 @@ const Flex = forwardRef(
       as,
       align,
       children,
-      className,
       direction,
       gap,
       justify,
@@ -42,17 +41,14 @@ const Flex = forwardRef(
 
     return (
       <Element
-        className={cx(
-          css`
-            display: flex;
-            flex-direction: ${direction};
-            align-items: ${align};
-            justify-content: ${justify};
-            flex-wrap: ${wrap};
-            gap: ${gap};
-          `,
-          className
-        )}
+        css={css`
+          display: flex;
+          flex-direction: ${direction};
+          align-items: ${align};
+          justify-content: ${justify};
+          flex-wrap: ${wrap};
+          gap: ${gap};
+        `}
         ref={forwardedRef}
         {...props}
       >

@@ -1,12 +1,12 @@
-import { css } from '@emotion/css'
+import { css } from '@emotion/react'
 import Dialog from 'components/Dialog'
 
 const DialogPage = () => {
   return (
     <main>
       <Dialog>
-        <Dialog.Trigger className={trigger}>다이어로그 버튼</Dialog.Trigger>
-        <Dialog.Overlay className={overlay} />
+        <Dialog.Trigger css={trigger}>다이어로그 버튼</Dialog.Trigger>
+        <Dialog.Overlay css={overlay} />
       </Dialog>
     </main>
   )
