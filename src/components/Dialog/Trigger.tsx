@@ -2,7 +2,7 @@ import { ComponentProps, forwardRef } from 'react'
 
 import Button from 'components/Button'
 
-import { useDialogValue } from '.'
+import { useDialogAction, useDialogValue } from '.'
 import useCombineRefs from 'hooks/useCombineRefs'
 
 type DialogTriggerProps = ComponentProps<typeof Button>
@@ -12,6 +12,7 @@ const TRIGGER_NAME = 'DialogTrigger'
 const DialogTrigger = forwardRef<HTMLButtonElement, DialogTriggerProps>(
   ({ children, ...triggerProps }, forwardedRef) => {
     const { open, contentId, triggerRef } = useDialogValue()
+    const { onOpenToggle } = useDialogAction()
 
     const combinedRef = useCombineRefs(triggerRef, forwardedRef)
 
@@ -21,6 +22,7 @@ const DialogTrigger = forwardRef<HTMLButtonElement, DialogTriggerProps>(
         aria-expanded={open}
         aria-controls={contentId}
         ref={combinedRef}
+        onClick={() => onOpenToggle()}
         {...triggerProps}
       >
         {children}

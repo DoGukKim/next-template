@@ -6,6 +6,9 @@ const ModalPage = () => {
       <Dialog>
         <Dialog.Trigger>test</Dialog.Trigger>
       </Dialog>
+      <Dialog>
+        <Dialog.Trigger>test2</Dialog.Trigger>
+      </Dialog>
     </main>
   )
 }

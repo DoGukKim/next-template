@@ -3,6 +3,7 @@ import {
   RefObject,
   createContext,
   useContext,
+  useId,
   useMemo,
   useRef,
   useState,
@@ -31,7 +32,7 @@ export const useDialogValue = () => {
   const context = useContext(DialogValueContext)
 
   if (context === null) {
-    throw new Error('프로바이더 확인해주세요!')
+    throw new Error('context is null')
   }
 
   return context
@@ -41,7 +42,7 @@ export const useDialogAction = () => {
   const context = useContext(DialogActionContext)
 
   if (context === null) {
-    throw new Error('프로바이더 확인해주세요!')
+    throw new Error('context is null')
   }
 
   return context
@@ -51,6 +52,7 @@ const Dialog = ({ children }: DialogProps) => {
   const [_open, setOpen] = useState<DialogValue['open']>(false)
 
   const triggerRef = useRef<HTMLButtonElement>(null)
+  const triggerId = useId()
 
   const actions = useMemo<DialogAction>(
     () => ({
@@ -61,11 +63,11 @@ const Dialog = ({ children }: DialogProps) => {
 
   const values = useMemo<DialogValue>(
     () => ({
+      contentId: `dialog-${triggerId}`,
       open: _open,
-      contentId: '',
       triggerRef: triggerRef,
     }),
-    [_open]
+    [_open, triggerId]
   )
 
   return (
