@@ -1,4 +1,5 @@
 import { css } from '@emotion/react'
+
 import Dialog from 'components/Dialog'
 
 const DialogPage = () => {
@@ -7,6 +8,7 @@ const DialogPage = () => {
       <Dialog>
         <Dialog.Trigger css={trigger}>다이어로그 버튼</Dialog.Trigger>
         <Dialog.Overlay css={overlay} />
+        <Dialog.Close>무제한아닌가요</Dialog.Close>
       </Dialog>
     </main>
   )

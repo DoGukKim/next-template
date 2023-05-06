@@ -2,7 +2,7 @@ import { ComponentPropsWithoutRef, forwardRef } from 'react'
 
 import Portal from 'components/Portal'
 
-import { useDialogAction, useDialogValue } from '.'
+import { useIsOpen, useOnToggle } from './context/Consumer'
 import { DIALOG_PORTAL_ROOT_ID } from 'shared/constants/portal'
 
 type DialogOverlayProps = ComponentPropsWithoutRef<'div'>
@@ -11,20 +11,20 @@ const OVERLAY_NAME = 'DialogOverlay'
 
 const DialogOverlay = forwardRef<HTMLDivElement, DialogOverlayProps>(
   ({ ...overlayProps }, forwardedRef) => {
-    const { open, modal } = useDialogValue()
-    const { onOpenToggle } = useDialogAction()
+    const isOpen = useIsOpen()
+    const onToggle = useOnToggle()
 
-    return modal ? (
+    return (
       <Portal id={DIALOG_PORTAL_ROOT_ID}>
-        {open && (
+        {isOpen && (
           <div
             ref={forwardedRef}
-            onClick={() => onOpenToggle()}
+            onClick={() => onToggle()}
             {...overlayProps}
           />
         )}
       </Portal>
-    ) : null
+    )
   }
 )
 
