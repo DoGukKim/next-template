@@ -43,5 +43,17 @@ export const useTrigger = () => {
     throw Error('context is Missing')
   }
 
-  return context
+  const { triggerId, triggerRef } = context
+  return { triggerId, triggerRef }
+}
+
+export const useContent = () => {
+  const context = useContext(DialogStaticContext)
+
+  if (context === null) {
+    throw Error('context is Missing')
+  }
+
+  const { contentId } = context
+  return { contentId }
 }

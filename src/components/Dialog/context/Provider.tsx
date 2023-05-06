@@ -16,6 +16,7 @@ type DialogState = {
 }
 
 type DialogStatic = {
+  contentId: string
   triggerId: string
   triggerRef: RefObject<HTMLButtonElement>
 }
@@ -54,15 +55,17 @@ const DialogProvider = ({ children }: DialogProviderProps) => {
     [isOpen]
   )
 
+  const contentId = `dialog-content-${useId()}`
   const triggerRef = useRef<HTMLButtonElement>(null)
   const triggerId = `dialog-${useId()}`
 
   const statics = useMemo<DialogStatic>(
     () => ({
+      contentId,
       triggerId,
       triggerRef,
     }),
-    [triggerId]
+    [contentId, triggerId]
   )
 
   return (
