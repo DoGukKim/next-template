@@ -24,6 +24,8 @@ type GridProps<E extends ElementType> = CombineType<
   Partial<GridStyleProps>
 >
 
+const GRID_NAME = 'Grid'
+
 const Grid = forwardRef(
   <E extends ElementType>(
     {
@@ -35,7 +37,7 @@ const Grid = forwardRef(
       gap,
       templateRows,
       templateColumns,
-      ...props
+      ...gridProps
     }: GridProps<E | typeof DEFAULT_ELEMENT>,
     forwardedRef: PolymorphicRef<E>
   ) => {
@@ -53,7 +55,7 @@ const Grid = forwardRef(
           gap: ${gap};
         `}
         ref={forwardedRef}
-        {...props}
+        {...gridProps}
       >
         {children}
       </Element>
@@ -61,7 +63,7 @@ const Grid = forwardRef(
   }
 )
 
-Grid.displayName = 'Grid'
+Grid.displayName = GRID_NAME
 
 export default Grid as <E extends LayoutElements>(
   props: GridProps<E> & { ref?: PolymorphicRef<E> }

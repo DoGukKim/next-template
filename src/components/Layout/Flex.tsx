@@ -23,6 +23,8 @@ type FlexProps<E extends ElementType> = CombineType<
   Partial<FlexStyleProps>
 >
 
+const FLEX_NAME = 'Flex'
+
 const Flex = forwardRef(
   <E extends ElementType>(
     {
@@ -33,7 +35,7 @@ const Flex = forwardRef(
       gap,
       justify,
       wrap,
-      ...props
+      ...flexProps
     }: FlexProps<E | typeof DEFAULT_ELEMENT>,
     forwardedRef: PolymorphicRef<E>
   ) => {
@@ -50,7 +52,7 @@ const Flex = forwardRef(
           gap: ${gap};
         `}
         ref={forwardedRef}
-        {...props}
+        {...flexProps}
       >
         {children}
       </Element>
@@ -58,7 +60,7 @@ const Flex = forwardRef(
   }
 )
 
-Flex.displayName = 'Flex'
+Flex.displayName = FLEX_NAME
 
 export default Flex as <E extends LayoutElements>(
   props: FlexProps<E> & { ref?: PolymorphicRef<E> }
