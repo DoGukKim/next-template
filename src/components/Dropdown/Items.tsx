@@ -1,29 +1,30 @@
 import { ComponentProps, forwardRef } from 'react'
 
 import MenuItems from 'components/Menu/Items'
-import Portal from 'components/Portal'
 
 import { useIsOpen, useTrigger } from './context/consumer'
 
-import { DROPDOWN_PORTAL_ROOT_ID } from 'shared/constants/portal'
-
-type DropdownMenuProps = ComponentProps<typeof MenuItems>
+type DropdownMenuItemsProps = ComponentProps<typeof MenuItems>
 
 const ITEMS_NAME = 'DropdownItems'
 
-const Items = forwardRef<HTMLUListElement, DropdownMenuProps>(
-  ({ children }, forwardedRef) => {
-    const isOpen = useIsOpen()
+const Items = forwardRef<HTMLUListElement, DropdownMenuItemsProps>(
+  ({ children, ...dropdownMenuItemsProps }, forwardedRef) => {
     const { triggerId } = useTrigger()
+    const isOpen = useIsOpen()
 
     return (
-      <Portal id={DROPDOWN_PORTAL_ROOT_ID}>
+      <>
         {isOpen && (
-          <MenuItems ref={forwardedRef} aria-labelledby={triggerId}>
+          <MenuItems
+            aria-labelledby={triggerId}
+            ref={forwardedRef}
+            {...dropdownMenuItemsProps}
+          >
             {children}
           </MenuItems>
         )}
-      </Portal>
+      </>
     )
   }
 )

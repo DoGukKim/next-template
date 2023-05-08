@@ -1,15 +1,13 @@
-import { ReactNode } from 'react'
+import { ComponentPropsWithoutRef } from 'react'
 
 import MenuItems from './Items'
 import MenuItem from './Item'
 import MenuSeparator from './Separator'
 
-type MenuProps = {
-  children: ReactNode
-}
+type MenuProps = ComponentPropsWithoutRef<'div'>
 
 const Menu = ({ children }: MenuProps) => {
-  return <>{children}</>
+  return <div aria-label="menu-wrapper">{children}</div>
 }
 
 Menu.Items = MenuItems
