@@ -1,7 +1,7 @@
 import { ComponentProps, forwardRef } from 'react'
 
 import Button from 'components/Button'
-import { useOnClose } from './context/Consumer'
+import { useOnClose } from './context/consumer'
 
 type DialogCloseProps = ComponentProps<typeof Button>
 

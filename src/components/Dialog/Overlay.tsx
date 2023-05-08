@@ -2,7 +2,7 @@ import { ComponentPropsWithoutRef, forwardRef } from 'react'
 
 import Portal from 'components/Portal'
 
-import { useIsOpen, useOnToggle } from './context/Consumer'
+import { useIsOpen, useOnToggle } from './context/consumer'
 import { DIALOG_PORTAL_ROOT_ID } from 'shared/constants/portal'
 
 type DialogOverlayProps = ComponentPropsWithoutRef<'div'>

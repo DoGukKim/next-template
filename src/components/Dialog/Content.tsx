@@ -3,7 +3,7 @@ import { ComponentPropsWithoutRef, forwardRef } from 'react'
 import Portal from 'components/Portal'
 
 import { DIALOG_PORTAL_ROOT_ID } from 'shared/constants/portal'
-import { useContent, useIsOpen } from './context/Consumer'
+import { useContent, useIsOpen } from './context/consumer'
 
 const CONTEXT_NAME = 'DialogContent'
 
