@@ -5,7 +5,7 @@ import Portal from 'components/Portal'
 import { DIALOG_PORTAL_ROOT_ID } from 'shared/constants/portal'
 import { useContent, useIsOpen } from './context/consumer'
 
-const CONTEXT_NAME = 'DialogContent'
+const CONTENT_NAME = 'DialogContent'
 
 type DialogContentProps = ComponentPropsWithoutRef<'div'>
 
@@ -31,6 +31,6 @@ const DialogContent = forwardRef<HTMLDivElement, DialogContentProps>(
   }
 )
 
-DialogContent.displayName = CONTEXT_NAME
+DialogContent.displayName = CONTENT_NAME
 
 export default DialogContent

@@ -1,17 +1,16 @@
 import { ReactNode } from 'react'
 import { css } from '@emotion/react'
 
-import Items from './Items'
+import Menu from './Menu'
 import Item from './Item'
-import Menu from 'components/Menu'
 import Provider from './context/Provider'
 import Trigger from './Trigger'
 
-type DropdownMenuProps = {
+type DropdownProps = {
   children: ReactNode
 }
 
-const DropdownMenu = ({ children }: DropdownMenuProps) => {
+const Dropdown = ({ children }: DropdownProps) => {
   return (
     <Provider>
       <Menu
@@ -25,8 +24,8 @@ const DropdownMenu = ({ children }: DropdownMenuProps) => {
   )
 }
 
-DropdownMenu.Trigger = Trigger
-DropdownMenu.Items = Items
-DropdownMenu.Item = Item
+Dropdown.Trigger = Trigger
+Dropdown.Menu = Menu
+Dropdown.Item = Item
 
-export default DropdownMenu
+export default Dropdown

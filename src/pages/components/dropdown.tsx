@@ -1,6 +1,6 @@
 import { css } from '@emotion/react'
 
-import DropdownMenu from 'components/Dropdown'
+import Dropdown from 'components/Dropdown'
 
 const mock = [
   {
@@ -20,22 +20,22 @@ const mock = [
 const DropdownPage = () => {
   return (
     <main css={mainCSS}>
-      <DropdownMenu>
-        <DropdownMenu.Trigger>테스트 합니다.</DropdownMenu.Trigger>
-        <DropdownMenu.Items css={items}>
+      {/* <Dropdown>
+        <Dropdown.Trigger>테스트 합니다.</Dropdown.Trigger>
+        <Dropdown.Menu css={items}>
           {mock.map((i) => {
             return (
-              <DropdownMenu.Item
+              <Dropdown.Item
                 onClick={() => console.log(`WORK${i.id}`)}
                 css={item}
                 key={i.id}
               >
                 {i.name}
-              </DropdownMenu.Item>
+              </Dropdown.Item>
             )
           })}
-        </DropdownMenu.Items>
-      </DropdownMenu>
+        </Dropdown.Menu>
+      </Dropdown> */}
     </main>
   )
 }

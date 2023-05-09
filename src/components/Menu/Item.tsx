@@ -1,15 +1,17 @@
 import { ComponentPropsWithoutRef, forwardRef } from 'react'
 
-type MenuItemProps = ComponentPropsWithoutRef<'li'>
+import { Flex } from 'components/Layout'
+
+type MenuItemProps = ComponentPropsWithoutRef<typeof Flex>
 
 const ITEM_NAME = 'MenuItem'
 
-const MenuItem = forwardRef<HTMLLIElement, MenuItemProps>(
+const MenuItem = forwardRef<HTMLElement, MenuItemProps>(
   ({ children, ...menuItemProps }, forwardedRef) => {
     return (
-      <li role="menuitem" ref={forwardedRef} {...menuItemProps}>
+      <Flex ref={forwardedRef} {...menuItemProps}>
         {children}
-      </li>
+      </Flex>
     )
   }
 )

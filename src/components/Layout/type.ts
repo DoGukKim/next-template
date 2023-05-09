@@ -7,3 +7,4 @@ export type LayoutElements =
   | 'aside'
   | 'ol'
   | 'ul'
+  | 'li'

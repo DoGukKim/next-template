@@ -4,11 +4,11 @@ import MenuItems from 'components/Menu/Items'
 
 import { useIsOpen, useTrigger } from './context/consumer'
 
-type DropdownMenuItemsProps = ComponentProps<typeof MenuItems>
+type DropdownMenuProps = ComponentProps<typeof MenuItems>
 
-const ITEMS_NAME = 'DropdownItems'
+const ITEMS_NAME = 'DropdownMenu'
 
-const Items = forwardRef<HTMLUListElement, DropdownMenuItemsProps>(
+const Menu = forwardRef<HTMLUListElement, DropdownMenuProps>(
   ({ children, ...dropdownMenuItemsProps }, forwardedRef) => {
     const { triggerId } = useTrigger()
     const isOpen = useIsOpen()
@@ -29,6 +29,6 @@ const Items = forwardRef<HTMLUListElement, DropdownMenuItemsProps>(
   }
 )
 
-Items.displayName = ITEMS_NAME
+Menu.displayName = ITEMS_NAME
 
-export default Items
+export default Menu

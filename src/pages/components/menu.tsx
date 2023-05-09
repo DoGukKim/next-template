@@ -19,17 +19,29 @@ const mock = [
 
 const MenuPage = () => {
   return (
-    <main>
+    <main
+      css={css`
+        display: flex;
+        justify-content: center;
+        min-height: 300px;
+      `}
+    >
       <Menu>
-        <Menu.Items css={menu}>
+        <Menu.Content
+          as="ul"
+          aria-orientation="vertical"
+          direction="column"
+          role="menu"
+          css={menu}
+        >
           {mock.map((i) => {
             return (
-              <Menu.Item css={item} key={i.id}>
+              <Menu.Item as="li" role="menuitem" css={item} key={i.id}>
                 {i.name}
               </Menu.Item>
             )
           })}
-        </Menu.Items>
+        </Menu.Content>
       </Menu>
     </main>
   )
@@ -63,4 +75,10 @@ const item = css`
   padding-left: 25px;
   user-select: none;
   outline: none;
+  cursor: pointer;
+
+  :hover {
+    color: white;
+    background-color: rgb(87, 70, 175);
+  }
 `

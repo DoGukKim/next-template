@@ -11,11 +11,11 @@ import {
 import { useMergeRefs } from 'hooks/useMergeRefs'
 import useOutsideClick from 'hooks/useOutsideClick'
 
-type DropdownMenuTriggerProps = ComponentProps<typeof Button>
+type DropdownTriggerProps = ComponentProps<typeof Button>
 
 const TRIGGER_NAME = 'DropdownMenuTrigger'
 
-const Trigger = forwardRef<HTMLButtonElement, DropdownMenuTriggerProps>(
+const Trigger = forwardRef<HTMLButtonElement, DropdownTriggerProps>(
   ({ children, ...dropdownTriggerProps }, forwardedRef) => {
     const { triggerRef, triggerId } = useTrigger()
     const isOpen = useIsOpen()
