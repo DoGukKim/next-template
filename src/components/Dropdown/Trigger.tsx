@@ -1,6 +1,4 @@
-import { ComponentProps, forwardRef } from 'react'
-
-import Button from 'components/Button'
+import { ReactElement } from 'react'
 
 import {
   useIsOpen,
@@ -8,37 +6,37 @@ import {
   useOnToggle,
   useTrigger,
 } from './context/consumer'
-import { useMergeRefs } from 'hooks/useMergeRefs'
 import useOutsideClick from 'hooks/useOutsideClick'
+import { DropdownMenuAction, DropdownMenuState } from './context/Provider'
 
-type DropdownTriggerProps = ComponentProps<typeof Button>
+type Args = Pick<DropdownMenuAction, 'onClose' | 'onToggle'> &
+  Pick<DropdownMenuState, 'isOpen'>
 
-const TRIGGER_NAME = 'DropdownMenuTrigger'
+type DropdownTriggerProps = {
+  children: (arg: Args) => ReactElement
+}
 
-const Trigger = forwardRef<HTMLButtonElement, DropdownTriggerProps>(
-  ({ children, ...dropdownTriggerProps }, forwardedRef) => {
-    const { triggerRef, triggerId } = useTrigger()
-    const isOpen = useIsOpen()
-    const onToggle = useOnToggle()
-    const onClose = useOnClose()
-    const mergedRef = useMergeRefs(triggerRef, forwardedRef)
+const TRIGGER_NAME = 'DropdownTrigger'
 
-    useOutsideClick(triggerRef, onClose)
+const Trigger = ({ children }: DropdownTriggerProps) => {
+  const { triggerRef, triggerId } = useTrigger()
+  const isOpen = useIsOpen()
+  const onToggle = useOnToggle()
+  const onClose = useOnClose()
 
-    return (
-      <Button
-        aria-haspopup="menu"
-        aria-expanded={isOpen}
-        aria-controls={triggerId}
-        ref={mergedRef}
-        onClick={onToggle}
-        {...dropdownTriggerProps}
-      >
-        {children}
-      </Button>
-    )
-  }
-)
+  useOutsideClick(triggerRef, onClose)
+
+  return (
+    <div
+      aria-expanded={isOpen}
+      aria-controls={triggerId}
+      aria-label="trigger-wrapper"
+      ref={triggerRef}
+    >
+      {children({ isOpen, onToggle, onClose })}
+    </div>
+  )
+}
 
 Trigger.displayName = TRIGGER_NAME
 

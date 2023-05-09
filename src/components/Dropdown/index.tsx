@@ -1,10 +1,10 @@
 import { ReactNode } from 'react'
 import { css } from '@emotion/react'
 
-import Menu from './Menu'
-import Item from './Item'
 import Provider from './context/Provider'
+import Content from './Content'
 import Trigger from './Trigger'
+import Item from './Item'
 
 type DropdownProps = {
   children: ReactNode
@@ -13,19 +13,20 @@ type DropdownProps = {
 const Dropdown = ({ children }: DropdownProps) => {
   return (
     <Provider>
-      <Menu
+      <div
+        aria-label="dropdown-wrapper"
         css={css`
           position: relative;
         `}
       >
         {children}
-      </Menu>
+      </div>
     </Provider>
   )
 }
 
 Dropdown.Trigger = Trigger
-Dropdown.Menu = Menu
+Dropdown.Content = Content
 Dropdown.Item = Item
 
 export default Dropdown

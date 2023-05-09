@@ -9,21 +9,21 @@ import {
   useState,
 } from 'react'
 
-type DropdownMenuState = {
+export type DropdownMenuState = {
   isOpen: boolean
 }
 
-type DropdownMenuStatic = {
+export type DropdownMenuStatic = {
   triggerId: string
-  triggerRef: RefObject<HTMLButtonElement>
+  triggerRef: RefObject<HTMLDivElement>
 }
 
-type DropdownMenuAction = {
+export type DropdownMenuAction = {
   onToggle: () => void
   onClose: () => void
 }
 
-type DropdownMenuProviderProps = {
+export type DropdownMenuProviderProps = {
   children: ReactNode
 }
 
@@ -49,7 +49,7 @@ const Provider = ({ children }: DropdownMenuProviderProps) => {
     [onClose, onToggle]
   )
 
-  const triggerRef = useRef<HTMLButtonElement>(null)
+  const triggerRef = useRef<HTMLDivElement>(null)
   const triggerId = `dropdown-${useId()}`
 
   const statics = useMemo<DropdownMenuStatic>(

@@ -1,17 +1,17 @@
 import { ComponentProps, forwardRef } from 'react'
 
-import MenuItem from 'components/Menu/Item'
+import Menu from 'components/Menu'
 
-type DropdownItemProps = ComponentProps<typeof MenuItem>
+type DropdownItemProps = ComponentProps<typeof Menu.Item>
 
 const ITEM_NAME = 'DropdownMenuItem'
 
-const Item = forwardRef<HTMLLIElement, DropdownItemProps>(
-  ({ children, ...dropdownMenuItemProps }, forwardedRef) => {
+const Item = forwardRef<HTMLElement, DropdownItemProps>(
+  ({ children, ...dropdownItemProps }, forwardedRef) => {
     return (
-      <MenuItem ref={forwardedRef} {...dropdownMenuItemProps}>
+      <Menu.Item ref={forwardedRef} {...dropdownItemProps}>
         {children}
-      </MenuItem>
+      </Menu.Item>
     )
   }
 )
